@@ -1,68 +1,21 @@
-import requests
-import json
 import PySimpleGUI as sg
 import os
 from huepy import *
-import paho.mqtt.client as mqtt_client
-import time
-import random
+from Grouplotse import Grouplotse
+import webbrowser
 
 sg.theme("LightBrown11")
 
 
-# MQTT Essentials
-broker = ''
-port = 0
-topic = ""
-username = ''
-password = ''
-client_id = f'python-mqtt-{random.randint(0, 1000)}'
-
-
-# broker = 'mqtt.grouplotse.com'
-# port = 1883
-# topic = "inc/19028414"
-# username = '37386677'
-# password = 'Xfbo1WfgRFe5'
-# client_id = f'python-mqtt-{random.randint(0, 1000)}'
-
-print(client_id)
-print(broker)
-print(port)
-print(topic)
-print(username)
-print(password)
-
-def connect_mqtt():
-    def on_connect(client, userdata, flags, rc):
-        if rc == 0:
-            print("Connected to MQTT Broker!")
-        else:
-            print("Failed to connect, return code %d\n", rc)
-    # Set Connecting Client ID
-    client = mqtt_client.Client(client_id)
-    client.username_pw_set(username, password)
-    client.on_connect = on_connect
-    client.connect(broker, port)
-    return client
-
-
-def publish(client, mqttmsg):
-    result = client.publish(topic, mqttmsg)
-    # result: [0, 1]
-    status = result[0]
-    if status == 0:
-        print(f"Sending `{mqttmsg}` to topic `{topic}`")
-    else:
-        print(f"Failed to send message to topic {topic}")
-
-
 def main():
-    settingsfile = "grouplotse_tester_webhook.txt"
-    isFile = os.path.isfile(settingsfile)
+    webhookfile = "grouplotse_tester_webhook.txt"
+    iswebhookFile = os.path.isfile(webhookfile)
+
+    mqttfile = "grouplotse_tester_mqtt.txt"
+    ismqttFile= os.path.isfile(mqttfile)
 
 
-    if not isFile:
+    if not iswebhookFile:
         with open("grouplotse_tester_webhook.txt", "w") as glsetwebhook:
             glsetwebhook.write("")
             glsetwebhook.close
@@ -70,11 +23,11 @@ def main():
         webhooklayout = [
             [sg.Text("Webhook_URL:"), sg.Push(), sg.Input("", key="-WEBHOOK-")],
             [sg.Text("Webhook_Key:"), sg.Push(), sg.Input("", key="-KEY-")],
-            [sg.Text("Message:"), sg.Push(), sg.Input("", key="-MESSAGE-")],
-            [sg.Button("Send"), sg.Button("Exit")],
+            [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
+            [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
         ]
 
-    if isFile:
+    if iswebhookFile:
         with open("grouplotse_tester_webhook.txt", "r+") as glsetwebhook:
             fileread = glsetwebhook.read()
             if not fileread:
@@ -82,8 +35,8 @@ def main():
                 webhooklayout = [
                     [sg.Text("Webhook_URL:"), sg.Push(), sg.Input("", key="-WEBHOOK-")],
                     [sg.Text("Webhook_Key:"), sg.Push(), sg.Input("", key="-KEY-")],
-                    [sg.Text("Message:"), sg.Push(), sg.Input("", key="-MESSAGE-")],
-                    [sg.Button("Send"), sg.Button("Exit")],
+                    [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
+                    [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
                 ]
             else:
                 split_list = fileread.split("#")
@@ -93,23 +46,76 @@ def main():
                 webhooklayout = [
                     [sg.Text("Webhook_URL:"), sg.Push(), sg.Input(webhook_split, key="-WEBHOOK-")],
                     [sg.Text("Webhook_Key:"), sg.Push(), sg.Input(webhook_key, key="-KEY-")],
-                    [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-MESSAGE-", size=(50, 6))],
+                    [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
                     [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
                 ]
 
-    mqttlayout = [
-        [sg.Text("Server URL:"), sg.Push(), sg.Input("mqtt.grouplotse.com", key="-MQTTBROKER-")],
-        [sg.Text("Port:"), sg.Push(), sg.Input("1883", key="-MQTTPORT-")],
-        [sg.Text("Topic:"), sg.Push(), sg.Input("inc/19028414", key="-MQTTTOPIC-")],
-        [sg.Text("Username:"), sg.Push(), sg.Input("37386677", key="-MQTTUSERNAME-")],
-        [sg.Text("Password:"), sg.Push(), sg.Input("Xfbo1WfgRFe5", key="-MQTTPASSWORD-")],
-        [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-MQTTMESSAGE-", size=(50, 6))],
-        [sg.Button("Send", key="-MQTTSEND-"), sg.Button("Exit", key="-EXIT1-")]
+
+
+
+
+
+
+    if not ismqttFile:
+        with open("grouplotse_tester_mqtt.txt", "w") as glsetmqtt:
+            glsetmqtt.write("")
+            glsetmqtt.close
+        print(info(yellow("Layout Empty")))
+        mqttlayout = [
+            [sg.Text("Server URL:"), sg.Push(), sg.Input("http://mqtt.grouplotse.com", key="-MQTTBROKER-")],
+            [sg.Text("Port:"), sg.Push(), sg.Input("1883", key="-MQTTPORT-")],
+            [sg.Text("Topic:"), sg.Push(), sg.Input("", key="-MQTTTOPIC-")],
+            [sg.Text("Username:"), sg.Push(), sg.Input("", key="-MQTTUSERNAME-")],
+            [sg.Text("Password:"), sg.Push(), sg.Input("", key="-MQTTPASSWORD-")],
+            [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-MQTTMESSAGE-", size=(50, 6))],
+            [sg.Button("Send", key="-MQTTSEND-"), sg.Button("Exit", key="-EXIT1-")]
         ]
+
+    if ismqttFile:
+        with open("grouplotse_tester_mqtt.txt", "r+") as glsetmqtt:
+            fileread = glsetmqtt.read()
+            if not fileread:
+                pass
+                mqttlayout = [
+                    [sg.Text("Server URL:"), sg.Push(), sg.Input("http://mqtt.grouplotse.com", key="-MQTTBROKER-")],
+                    [sg.Text("Port:"), sg.Push(), sg.Input("1883", key="-MQTTPORT-")],
+                    [sg.Text("Topic:"), sg.Push(), sg.Input("", key="-MQTTTOPIC-")],
+                    [sg.Text("Username:"), sg.Push(), sg.Input("", key="-MQTTUSERNAME-")],
+                    [sg.Text("Password:"), sg.Push(), sg.Input("", key="-MQTTPASSWORD-")],
+                    [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-MQTTMESSAGE-", size=(50, 6))],
+                    [sg.Button("Send", key="-MQTTSEND-"), sg.Button("Exit", key="-EXIT1-")]
+                ]
+            else:
+                split_list = fileread.split("#")
+                topic = split_list[2]
+                username = split_list[3]
+                password = split_list[4]
+                print(info(yellow("Layout Filled")))
+                mqttlayout = [
+                    [sg.Text("Server URL:"), sg.Push(), sg.Input("mqtt.grouplotse.com", key="-MQTTBROKER-")],
+                    [sg.Text("Port:"), sg.Push(), sg.Input("1883", key="-MQTTPORT-")],
+                    [sg.Text("Topic:"), sg.Push(), sg.Input(topic, key="-MQTTTOPIC-")],
+                    [sg.Text("Username:"), sg.Push(), sg.Input(username, key="-MQTTUSERNAME-")],
+                    [sg.Text("Password:"), sg.Push(), sg.Input(password, key="-MQTTPASSWORD-")],
+                    [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-MQTTMESSAGE-", size=(50, 6))],
+                    [sg.Button("Send", key="-MQTTSEND-"), sg.Button("Exit", key="-EXIT1-")]
+                ]
+
+
+    aboutlayout = [[sg.Multiline("GroupLotse is a virtual assistant that enables quick clarification of responsibilities\n"
+                           " and precise device control. Your team can be actively involved in all decision-making\n"
+                   " processes. Furthermore, it is also possible to fully automate all processes.\n"
+                    "\n\nYour team can interact with GroupLotse via the common communication and collaboration\n"
+                   " platforms Slack, Microsoft Teams and Telegram. This ensures that GroupLotse can be productively\n"
+                   " integrated into workflows and that all relevant information is available at all times. To achieve\n"
+                   " this, GroupLotse is simply integrated into your existing channels and chat groups.\n",
+                            expand_y=True), sg.Button("", image_filename="gl_icon.png", key='-WEBSITEBUTTON-')]]
+
 
     #   Tab Group Layout (must contain ONLY tabs)
     tab_group_layout = [[sg.Tab('Webhook', webhooklayout, key='-TAB0-'),
                             sg.Tab('MQTT', mqttlayout, key='-TAB1-'),
+                         sg.Tab('About', aboutlayout, key='-TABAB-')
                             ]]
 
     #   The window layout - defines the entire window
@@ -131,21 +137,16 @@ def main():
         if event == "-WEBHOOKSEND-":
             webhook = values["-WEBHOOK-"]
             key = values["-KEY-"]
-            webhook_url = webhook + "?key=" + key
-            data = values["-MESSAGE-"]
-            webhook_post = requests.post(
-                webhook_url,
-                data=json.dumps(data),
-                headers={"Content-Type": "application/json"},
-            )
-            print(good(green(f'Sent "{data}" as POST Message to your Grouplotse')))
+            data = values["-WHMESSAGE-"]
+
+            Grouplotse.webhook_post(Grouplotse, webhook, key, data)
+
             with open("grouplotse_tester_webhook.txt", "w") as glsetwebhook:
                 glsetwebhook.write(webhook + "#" + key)  # append data
                 print(run(white(f"Saved {webhook}#{key} to list")))
                 glsetwebhook.close()
 
         if event == "-MQTTSEND-":
-            global broker, port, topic, username, password
             broker = values["-MQTTBROKER-"]
             port_string = values["-MQTTPORT-"]
             port = (int(port_string))
@@ -156,16 +157,16 @@ def main():
             password = str(password_unf)
             mqttmsg = values["-MQTTMESSAGE-"]
 
-            print(client_id)
-            print(broker)
-            print(port)
-            print(topic)
-            print(username)
-            print(password)
+            Grouplotse.mqtt_send(Grouplotse, topic, username, password, mqttmsg)
 
-            client = connect_mqtt()
-            print(client)
-            publish(client, mqttmsg)
+            with open("grouplotse_tester_mqtt.txt", "w") as glsetmqtt:
+                glsetmqtt.write("http://mqtt.grouplotse.com#1883"+"#"+topic+"#"+username+"#"+password)
+                print(f"Saved {topic}#{username}#{password} to list")
+                glsetmqtt.close()
+
+        if event == "-WEBSITEBUTTON-":
+            webbrowser.open("https://grouplotse.com/")
+
 
     window.close()
 
