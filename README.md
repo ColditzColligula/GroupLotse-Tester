@@ -14,7 +14,9 @@
 
 A small GUI Application to test your **GroupLotse** Interfaces
 
-GroupLotse currently supports **Webhook (POST/GET), MQTT, SMS and E-Mail**. This Application will allow you to **test and send messages** to GroupLotse's Webhook and MQTT Interfaces.
+GroupLotse currently supports **Webhook (POST/GET), MQTT, SMS and E-Mail**. This Application will allow you to **test and send messages** to GroupLotse's Webhook and MQTT Interfaces. 
+
+Feel free to import the **GroupLotse class from "GroupLotse.py"** into your personal projects. That way you can send messages to Grouplotse from within your applications.
 
 <p align="center">
  <img src="https://user-images.githubusercontent.com/79027579/168610676-7db44721-40d9-4c0a-97c5-587ec7e01a06.png">
@@ -36,6 +38,8 @@ GroupLotse is a Virtual Assistant for Telegram, Slack and Microsoft Teams.
 <a href="https://grouplotse.com/en/grouplotse-for-microsoft-teams/">
   <img alt="Microsoft Teams" src="https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white">
       </a>
+
+
 
 
 
