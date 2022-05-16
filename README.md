@@ -48,6 +48,16 @@ Learn more about GroupLotse on our [official Website](https://grouplotse.com) an
       </a> and <a href="https://www.linkedin.com/company/grouplotse/"> <img alt="Linkedin @ Grouplotse" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"> </a>
 
 
+
+
+Watch our short Youtube video to find out how GroupLotse can help you overcome the daily challenges of communicating responsibilities!
+
+<a href="https://www.youtube.com/watch?v=6mAiQxft26Y">
+  <img alt="Youtube @ GroupLotse" src="https://user-images.githubusercontent.com/79027579/168650779-966b0e50-090b-42d0-bbd9-3d1a72afd3f3.png">
+      </a>
+
+
+
 ## Table of contents
 * [General info](#general-info)
 * [Windows Executable](#windows-executable)
