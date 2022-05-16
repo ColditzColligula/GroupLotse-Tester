@@ -5,7 +5,7 @@ import json
 
 class Grouplotse:
     #attributes#methods
-    def webhook_post(self, webhook_addr, webhook_key, webhook_msg):
+    def webhook_post(webhook_addr, webhook_key, webhook_msg):
         webhook_lotse = (webhook_addr+"?key="+webhook_key)
 
         try:
@@ -16,7 +16,7 @@ class Grouplotse:
                             "configured correctly!")
 
 
-    def mqtt_send(self, topic, username, password, mqttmsg):
+    def mqtt_send(topic, username, password, mqttmsg):
         client_id = f'python-mqtt-{random.randint(0, 1000)}'
         broker = "mqtt.grouplotse.com"
         port = 1883
