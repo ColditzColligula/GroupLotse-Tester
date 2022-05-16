@@ -3,19 +3,21 @@
 <a href="https://grouplotse.com">
          <img alt="Grouplotse" src="https://grouplotse.com/wp-content/uploads/2021/02/gl_logo_runde-ecken-219x36-1.png">
       </a>
-  
 </p>
 
 
 # GroupLotse Buddy
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ColditzColligula/GroupLotse-Tester?style=plastic)
+![GitHub all releases](https://img.shields.io/github/downloads/ColditzColligula/GroupLotse-Tester/total)
+![GitHub](https://img.shields.io/github/license/ColditzColligula/GroupLotse-Tester)
+
 A small GUI Application to test your **GroupLotse** Interfaces
 
 GroupLotse currently supports **Webhook (POST/GET), MQTT, SMS and E-Mail**. This Application will allow you to **test and send messages** to GroupLotse's Webhook and MQTT Interfaces.
 
 <p align="center">
-  
  <img src="https://user-images.githubusercontent.com/79027579/168610676-7db44721-40d9-4c0a-97c5-587ec7e01a06.png">
-  
 </p>
 
 GroupLotse is a Virtual Assistant for Telegram, Slack and Microsoft Teams.
@@ -36,8 +38,10 @@ GroupLotse is a Virtual Assistant for Telegram, Slack and Microsoft Teams.
       </a>
 
 
-Learn more about GroupLotse on our [official Website!](https://grouplotse.com)
 
+Learn more about GroupLotse on our [official Website](https://grouplotse.com) and follow us on <a href="https://www.youtube.com/c/GroupLotse/">
+  <img alt="Youtube @ GroupLotse" src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white">
+      </a> and <a href="https://www.linkedin.com/company/grouplotse/"> <img alt="Linkedin @ Grouplotse" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"> </a>
 
 
 ## Table of contents
