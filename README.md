@@ -3,6 +3,16 @@ A small GUI Application to test your **GroupLotse** Interfaces
 
 GroupLotse currently supports **Webhook (POST/GET), MQTT, SMS and E-Mail**. This Application will allow you to **test and send messages** to GroupLotse's Webhook and MQTT Interfaces.
 
+
+GroupLotse is a Virtual Assistant for Telegram, Slack and Microsoft Teams.
+
+![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white) ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white) ![Teams](https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white)
+
+
+Learn more about GroupLotse on our [official Website!](https://grouplotse.com)
+
+![GroupLotse](https://grouplotse.com/wp-content/uploads/2021/02/gl_logo_runde-ecken-219x36-1.png)
+
 ## Table of contents
 * [General info](#general-info)
 * [Windows Executable](#windows-executable)
@@ -41,14 +51,19 @@ You can download a 7zip-File containing all necessary files to run this applicat
 
 The application works on Windows and Unix/MacOS.
 
-Windows: You can either [download the prepared 7zip-file](https://www.dropbox.com/s/ojyq7ugeojhyw5m/GroupLotse%20Interface%20Tester.7z?raw=1) containing all necessary files to run and execute the program **or** [download the Github Repository](https://github.com/ColditzColligula/GroupLotse-Tester/archive/refs/heads/main.zip) and open the "main.py" file with Python3.
+![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
+
+You can either [download the prepared 7zip-file](https://www.dropbox.com/s/ojyq7ugeojhyw5m/GroupLotse%20Interface%20Tester.7z?raw=1) containing all necessary files to run and execute the program **or** [download the Github Repository](https://github.com/ColditzColligula/GroupLotse-Tester/archive/refs/heads/main.zip) and open the "main.py" file with Python3.
 If you're **not** using the bundled .exe file, make sure to install the required pre-requisites.
 
 Required:
 - [PySimpleGUI](https://github.com/PySimpleGUI)
 - [huepy](https://github.com/s0md3v/huepy)
 
-Unix/MacOS: [Download the Github Repository](https://github.com/ColditzColligula/GroupLotse-Tester/archive/refs/heads/main.zip) and start "main.py" with Python3.
+
+![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) / ![Mac OS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
+
+[Download the Github Repository](https://github.com/ColditzColligula/GroupLotse-Tester/archive/refs/heads/main.zip) and start "main.py" with Python3.
 
 You can do this by opening a Shell, navigating to the directory that contains "main.py" and typing "python3 main.py".
 
