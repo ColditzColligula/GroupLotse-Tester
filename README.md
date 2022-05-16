@@ -85,7 +85,7 @@ If you're **not** using the bundled .exe file, make sure to install the required
 
 Required:
 - [PySimpleGUI](https://github.com/PySimpleGUI)
-- [huepy](https://github.com/s0md3v/huepy)
+- [paho-mqtt](https://pypi.org/project/paho-mqtt/)
 
 
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black) / ![Mac OS](https://img.shields.io/badge/mac%20os-000000?style=for-the-badge&logo=macos&logoColor=F0F0F0)
