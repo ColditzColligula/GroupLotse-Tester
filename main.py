@@ -1,6 +1,5 @@
 import PySimpleGUI as sg
 import os
-from huepy import *
 from Grouplotse import Grouplotse
 import webbrowser
 
@@ -19,7 +18,7 @@ def main():
         with open("grouplotse_tester_webhook.txt", "w") as glsetwebhook:
             glsetwebhook.write("")
             glsetwebhook.close
-        print(info(yellow("Layout Empty")))
+        print("Layout Empty")
         webhooklayout = [
             [sg.Text("Webhook_URL:"), sg.Push(), sg.Input("", key="-WEBHOOK-")],
             [sg.Text("Webhook_Key:"), sg.Push(), sg.Input("", key="-KEY-")],
@@ -42,7 +41,7 @@ def main():
                 split_list = fileread.split("#")
                 webhook_split = split_list[0]
                 webhook_key = split_list[1]
-                print(info(yellow("Layout Filled")))
+                print("Layout Filled")
                 webhooklayout = [
                     [sg.Text("Webhook_URL:"), sg.Push(), sg.Input(webhook_split, key="-WEBHOOK-")],
                     [sg.Text("Webhook_Key:"), sg.Push(), sg.Input(webhook_key, key="-KEY-")],
@@ -60,7 +59,7 @@ def main():
         with open("grouplotse_tester_mqtt.txt", "w") as glsetmqtt:
             glsetmqtt.write("")
             glsetmqtt.close
-        print(info(yellow("Layout Empty")))
+        print("Layout Empty")
         mqttlayout = [
             [sg.Text("Server URL:"), sg.Push(), sg.Input("http://mqtt.grouplotse.com", key="-MQTTBROKER-")],
             [sg.Text("Port:"), sg.Push(), sg.Input("1883", key="-MQTTPORT-")],
@@ -90,7 +89,7 @@ def main():
                 topic = split_list[2]
                 username = split_list[3]
                 password = split_list[4]
-                print(info(yellow("Layout Filled")))
+                print("Layout Filled")
                 mqttlayout = [
                     [sg.Text("Server URL:"), sg.Push(), sg.Input("mqtt.grouplotse.com", key="-MQTTBROKER-")],
                     [sg.Text("Port:"), sg.Push(), sg.Input("1883", key="-MQTTPORT-")],
@@ -143,7 +142,7 @@ def main():
 
             with open("grouplotse_tester_webhook.txt", "w") as glsetwebhook:
                 glsetwebhook.write(webhook + "#" + key)  # append data
-                print(run(white(f"Saved {webhook}#{key} to list")))
+                print(f"Saved {webhook}#{key} to list")
                 glsetwebhook.close()
 
         if event == "-MQTTSEND-":
