@@ -37,7 +37,7 @@ In addition to our free plan, there are three other paid plans. These differ in 
 
 You can download a 7zip-File containing all necessary files to run this application [here.](https://www.dropbox.com/s/ojyq7ugeojhyw5m/GroupLotse%20Interface%20Tester.7z?raw=1) After you have extracted the Archive, just run the Shortcut "GroupLotse Interface Tester".
 
-**Setup and Usage**
+## Setup and Usage
 
 The application works on Windows and Unix/MacOS.
 
