@@ -101,7 +101,9 @@ The application works on Windows and Unix/MacOS.
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
 You can either [download the prepared 7zip-file](https://www.dropbox.com/s/ojyq7ugeojhyw5m/GroupLotse%20Interface%20Tester.7z?raw=1) containing all necessary files to run and execute the program **or** [download the Github Repository](https://github.com/ColditzColligula/GroupLotse-Tester/archive/refs/heads/main.zip) and open the "main.py" file with Python3.
-If you're **not** using the bundled .exe file, make sure to install the required pre-requisites.
+If you're **not** using the bundled .exe file, make sure to install the required libraries.
+
+You can do this easily by utilizing the "requirements.txt" by opening a CMD/Shell and typing "pip install -r requirements.txt" (You must be in the same directory where the file is located)
 
 Required:
 - [PySimpleGUI](https://github.com/PySimpleGUI)
@@ -115,7 +117,7 @@ Required:
 
 You can do this by opening a Shell, navigating to the directory that contains "main.py" and typing "python3 main.py".
 
-make sure to install the required pre-requisites listed above!
+make sure to install the required libraries above! You can do this easily by utilizing the "requirements.txt" by opening a Terminal/Shell and typing "pip install -r requirements.txt" (You must be in the same directory where the file is located)
 
 ## Planned Features
 
