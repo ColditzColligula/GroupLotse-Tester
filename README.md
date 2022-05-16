@@ -1,4 +1,13 @@
-# GroupLotse-Tester
+<p align="center">
+  
+<a href="https://grouplotse.com">
+         <img alt="Grouplotse" src="https://grouplotse.com/wp-content/uploads/2021/02/gl_logo_runde-ecken-219x36-1.png">
+      </a>
+  
+</p>
+
+
+# GroupLotse Buddy
 A small GUI Application to test your **GroupLotse** Interfaces
 
 GroupLotse currently supports **Webhook (POST/GET), MQTT, SMS and E-Mail**. This Application will allow you to **test and send messages** to GroupLotse's Webhook and MQTT Interfaces.
@@ -11,12 +20,25 @@ GroupLotse currently supports **Webhook (POST/GET), MQTT, SMS and E-Mail**. This
 
 GroupLotse is a Virtual Assistant for Telegram, Slack and Microsoft Teams.
 
-![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white) ![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white) ![Teams](https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white)
+
+<a href="https://grouplotse.com/en/grouplotse-for-telegram/">
+         <img alt="Telegram" src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white">
+      </a>
+
+                               
+<a href="https://grouplotse.com/en/grouplotse-for-slack/">
+         <img alt="Slack" src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
+      </a>
+
+
+<a href="https://grouplotse.com/en/grouplotse-for-microsoft-teams/">
+  <img alt="Microsoft Teams" src="https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white">
+      </a>
 
 
 Learn more about GroupLotse on our [official Website!](https://grouplotse.com)
 
-![GroupLotse](https://grouplotse.com/wp-content/uploads/2021/02/gl_logo_runde-ecken-219x36-1.png)
+
 
 ## Table of contents
 * [General info](#general-info)
