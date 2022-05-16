@@ -25,17 +25,17 @@ Feel free to import the **GroupLotse class from "GroupLotse.py"** into your pers
 GroupLotse is a Virtual Assistant for Telegram, Slack and Microsoft Teams.
 
 
-<a href="https://grouplotse.com/en/grouplotse-for-telegram/">
+<a href="https://grouplotse.com/en/grouplotse-for-telegram/" target="_blank">
          <img alt="Telegram" src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white">
       </a>
 
                                
-<a href="https://grouplotse.com/en/grouplotse-for-slack/">
+<a href="https://grouplotse.com/en/grouplotse-for-slack/" target="_blank">
          <img alt="Slack" src="https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white">
       </a>
 
 
-<a href="https://grouplotse.com/en/grouplotse-for-microsoft-teams/">
+<a href="https://grouplotse.com/en/grouplotse-for-microsoft-teams/" target="_blank">
   <img alt="Microsoft Teams" src="https://img.shields.io/badge/Microsoft_Teams-6264A7?style=for-the-badge&logo=microsoft-teams&logoColor=white">
       </a>
 
@@ -43,16 +43,18 @@ GroupLotse is a Virtual Assistant for Telegram, Slack and Microsoft Teams.
 
 
 
-Learn more about GroupLotse on our [official Website](https://grouplotse.com) and follow us on <a href="https://www.youtube.com/c/GroupLotse/">
+Learn more about GroupLotse on our [official Website](https://grouplotse.com) and follow us on <a href="https://www.youtube.com/c/GroupLotse/" target="_blank">
   <img alt="Youtube @ GroupLotse" src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white">
-      </a> and <a href="https://www.linkedin.com/company/grouplotse/"> <img alt="Linkedin @ Grouplotse" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"> </a>
+      </a> and <a href="https://www.linkedin.com/company/grouplotse/" target="_blank"> <img alt="Linkedin @ Grouplotse" src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white"> </a>
 
 
 
 
-Watch our short Youtube video to find out how GroupLotse can help you overcome the daily challenges of communicating responsibilities!
 
-<a href="https://www.youtube.com/watch?v=6mAiQxft26Y">
+
+Watch our short Youtube video to find out how **GroupLotse can help you overcome the daily challenges of communicating responsibilities!**
+
+<a href="https://www.youtube.com/watch?v=6mAiQxft26Y" target="_blank">
   <img alt="Youtube @ GroupLotse" src="https://user-images.githubusercontent.com/79027579/168651131-e5fc6b0e-85da-448c-b52f-78736a31d811.png">
       </a>
 
