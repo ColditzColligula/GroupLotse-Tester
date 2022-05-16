@@ -53,7 +53,7 @@ Learn more about GroupLotse on our [official Website](https://grouplotse.com) an
 Watch our short Youtube video to find out how GroupLotse can help you overcome the daily challenges of communicating responsibilities!
 
 <a href="https://www.youtube.com/watch?v=6mAiQxft26Y">
-  <img alt="Youtube @ GroupLotse" src="https://user-images.githubusercontent.com/79027579/168650779-966b0e50-090b-42d0-bbd9-3d1a72afd3f3.png">
+  <img alt="Youtube @ GroupLotse" src="https://user-images.githubusercontent.com/79027579/168651131-e5fc6b0e-85da-448c-b52f-78736a31d811.png">
       </a>
 
 
