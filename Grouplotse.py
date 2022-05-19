@@ -5,6 +5,22 @@ import json
 
 class Grouplotse:
     #attributes#methods
+    def webhook_file_post(webhook_addr, webhook_key, filepath):
+        try:
+            payload = {}
+            files = [
+                ('file', (f'data.png', open(f'{filepath}', 'rb')))
+            ]
+            headers = {
+                'Authorization': webhook_key,
+            }
+            requests.post(webhook_addr, headers=headers, data=payload, files=files)
+            print(f'Sending "{filepath}" as POST Message to your Grouplotse')
+        except:
+            raise Exception("Failed to send message. Key or Webhook Address might be incorrect or your GroupLotse isn't"
+                            "configured correctly!")
+
+
     def webhook_post(webhook_addr, webhook_key, webhook_msg):
         webhook_lotse = (webhook_addr+"?key="+webhook_key)
 

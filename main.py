@@ -2,14 +2,14 @@ import PySimpleGUI as sg
 import os
 from Grouplotse import Grouplotse
 import webbrowser
-
+import time
 sg.theme("LightBrown11")
 
 
 def main():
     webhookfile = "grouplotse_tester_webhook.txt"
     iswebhookFile = os.path.isfile(webhookfile)
-
+    filepath = ""
     mqttfile = "grouplotse_tester_mqtt.txt"
     ismqttFile= os.path.isfile(mqttfile)
 
@@ -23,6 +23,7 @@ def main():
             [sg.Text("Webhook_URL:"), sg.Push(), sg.Input("", key="-WEBHOOK-")],
             [sg.Text("Webhook_Key:"), sg.Push(), sg.Input("", key="-KEY-")],
             [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
+            [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", disabled=True)],
             [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
         ]
 
@@ -35,6 +36,7 @@ def main():
                     [sg.Text("Webhook_URL:"), sg.Push(), sg.Input("", key="-WEBHOOK-")],
                     [sg.Text("Webhook_Key:"), sg.Push(), sg.Input("", key="-KEY-")],
                     [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
+                    [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", disabled=True)],
                     [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
                 ]
             else:
@@ -46,6 +48,7 @@ def main():
                     [sg.Text("Webhook_URL:"), sg.Push(), sg.Input(webhook_split, key="-WEBHOOK-")],
                     [sg.Text("Webhook_Key:"), sg.Push(), sg.Input(webhook_key, key="-KEY-")],
                     [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
+                    [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", disabled=True)],
                     [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
                 ]
 
@@ -127,23 +130,32 @@ def main():
     window = sg.Window("GroupLotse Buddy", layout)
 
     while True:
-        event, values = window.read()
+        event, values = window.read(timeout=10)
         if (
             event == sg.WIN_CLOSED or event == "-EXIT0-" or event == "-EXIT1-"
         ):  # if user closes window or clicks cancel
             break
 
+        #if int(values['-FILEBROWSE-']) > 3:
+        filepath = values["-FILEBROWSE-"]
+        window["-FILEPATHWH-"].update(filepath, text_color="black", background_color="brown")
+
         if event == "-WEBHOOKSEND-":
             webhook = values["-WEBHOOK-"]
             key = values["-KEY-"]
             data = values["-WHMESSAGE-"]
-
-            Grouplotse.webhook_post(webhook, key, data)
+            filepath = values["-FILEBROWSE-"]
+            print(len(data))
+            if len(data) >= 1:
+                Grouplotse.webhook_post(webhook, key, data)
+            if len(filepath) > 3:
+                Grouplotse.webhook_file_post(webhook,key,filepath)
 
             with open("grouplotse_tester_webhook.txt", "w") as glsetwebhook:
                 glsetwebhook.write(webhook + "#" + key)  # append data
                 print(f"Saved {webhook}#{key} to list")
                 glsetwebhook.close()
+
 
         if event == "-MQTTSEND-":
             broker = values["-MQTTBROKER-"]
