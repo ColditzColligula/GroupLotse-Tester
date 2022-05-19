@@ -88,7 +88,7 @@ It is also possible to use GroupLotse in several messengers at the same time. Ho
 
 **What plans are available?**
 
-In addition to our free plan, there are three other paid plans. These differ in the maximum number of GroupLots, interfaces and messages per day, as well as in additional features such as call notifications and telephone support. To check available plans, follow [this link!](https://grouplotse.com/en/pricing/)
+In addition to our free plan, there are three other paid plans. These differ in the maximum number of GroupLotse, interfaces and messages per day, as well as in additional features such as call notifications and telephone support. To check available plans, follow [this link!](https://grouplotse.com/en/pricing/)
 
 ## Windows Executable
 
