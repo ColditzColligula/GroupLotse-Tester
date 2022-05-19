@@ -126,7 +126,7 @@ def main():
                         key='-TABGROUP-')]]
 
 
-    window = sg.Window("GroupLotse Buddy", layout)
+    window = sg.Window("GroupLotse Tester", layout)
 
     while True:
         event, values = window.read(timeout=10)
@@ -145,7 +145,7 @@ def main():
             data = values["-WHMESSAGE-"]
             filepath = values["-FILEBROWSE-"]
             if len(data) >= 1:
-                Grouplotse.webhook_post(webhook, key, data)
+                Grouplotse.webhook_post(Grouplotse, webhook, key, data)
             if len(filepath) > 3:
                 file_path, file_extension = os.path.splitext(filepath)
                 file_size = os.path.getsize(filepath)
@@ -153,7 +153,7 @@ def main():
                 print(f'\nFilesize is {file_size_kb:.2f} Kilobytes')
                 allowed_file_extensions = [".png", ".jpg", ".jpeg"]
                 if file_size <= 1048576 and file_extension in allowed_file_extensions:
-                    Grouplotse.webhook_file_post(webhook, key, filepath, file_extension)
+                    Grouplotse.webhook_file_post(Grouplotse, webhook, key, filepath, file_extension)
                     print(f'\nSending a {file_extension} image to GroupLotse')
                     window.find_element('-FILEPATHWH-').Update('')
                 if file_size >= 1048576:
@@ -179,7 +179,7 @@ def main():
             password = str(password_unf)
             mqttmsg = values["-MQTTMESSAGE-"]
 
-            Grouplotse.mqtt_send(topic, username, password, mqttmsg)
+            Grouplotse.mqtt_send(Grouplotse, topic, username, password, mqttmsg)
 
             with open("grouplotse_tester_mqtt.txt", "w") as glsetmqtt:
                 glsetmqtt.write("http://mqtt.grouplotse.com#1883"+"#"+topic+"#"+username+"#"+password)

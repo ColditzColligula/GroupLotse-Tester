@@ -5,7 +5,7 @@ import json
 
 class Grouplotse:
     #attributes#methods
-    def webhook_file_post(webhook_addr, webhook_key, filepath, file_extension):
+    def webhook_file_post(self, webhook_addr, webhook_key, filepath, file_extension):
         """Main Function to send images via Webhook.
         webhook_addr is the URL of your Webhook. webhook_key is the Key.
         Next, specify the file and pass the file extension."""
@@ -24,7 +24,7 @@ class Grouplotse:
                             "configured correctly!")
 
 
-    def webhook_post(webhook_addr, webhook_key, webhook_msg):
+    def webhook_post(self, webhook_addr, webhook_key, webhook_msg):
         """Main function to send Text via Webhook.
         webhook_addr is the URL of your Webhook. webhook_key is the Key.
         Pass a String to webhook_msg and call the method."""
@@ -38,7 +38,7 @@ class Grouplotse:
                             "configured correctly!")
 
 
-    def mqtt_send(topic, username, password, mqttmsg):
+    def mqtt_send(self, topic, username, password, mqttmsg):
         """Main function to send Text message via MQTT.
         The client_id and broker are set to the standard for Grouplotse. Make sure you pass
         the right topic, username and password - followed by your String for 'mqttmsg' and call
