@@ -2,7 +2,6 @@ import PySimpleGUI as sg
 import os
 from Grouplotse import Grouplotse
 import webbrowser
-import time
 sg.theme("LightBrown11")
 
 
@@ -23,8 +22,8 @@ def main():
             [sg.Text("Webhook_URL:"), sg.Push(), sg.Input("", key="-WEBHOOK-")],
             [sg.Text("Webhook_Key:"), sg.Push(), sg.Input("", key="-KEY-")],
             [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
-            [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", disabled=True)],
-            [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
+            [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", do_not_clear=False)],
+            [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-"), sg.Push(), sg.Text("Max Filesize: 1024Kb"), sg.Push()],
         ]
 
     if iswebhookFile:
@@ -36,8 +35,8 @@ def main():
                     [sg.Text("Webhook_URL:"), sg.Push(), sg.Input("", key="-WEBHOOK-")],
                     [sg.Text("Webhook_Key:"), sg.Push(), sg.Input("", key="-KEY-")],
                     [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
-                    [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", disabled=True)],
-                    [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
+                    [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", do_not_clear=False)],
+                    [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-"), sg.Push(), sg.Text("Max Filesize: 1024Kb"), sg.Push()],
                 ]
             else:
                 split_list = fileread.split("#")
@@ -48,8 +47,8 @@ def main():
                     [sg.Text("Webhook_URL:"), sg.Push(), sg.Input(webhook_split, key="-WEBHOOK-")],
                     [sg.Text("Webhook_Key:"), sg.Push(), sg.Input(webhook_key, key="-KEY-")],
                     [sg.Text("Message:"), sg.Push(), sg.Multiline(key="-WHMESSAGE-", size=(50, 6))],
-                    [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", disabled=True)],
-                    [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-")],
+                    [sg.FileBrowse("Browse", key="-FILEBROWSE-"), sg.Push(), sg.InputText(filepath, key="-FILEPATHWH-", do_not_clear=False)],
+                    [sg.Button("Send", key="-WEBHOOKSEND-"), sg.Button("Exit", key="-EXIT0-"), sg.Push(), sg.Text("Max Filesize: 1024Kb"), sg.Push()],
                 ]
 
 
@@ -136,20 +135,32 @@ def main():
         ):  # if user closes window or clicks cancel
             break
 
-        #if int(values['-FILEBROWSE-']) > 3:
         filepath = values["-FILEBROWSE-"]
-        window["-FILEPATHWH-"].update(filepath, text_color="black", background_color="brown")
+        window["-FILEPATHWH-"].update(filepath)
+
 
         if event == "-WEBHOOKSEND-":
             webhook = values["-WEBHOOK-"]
             key = values["-KEY-"]
             data = values["-WHMESSAGE-"]
             filepath = values["-FILEBROWSE-"]
-            print(len(data))
             if len(data) >= 1:
                 Grouplotse.webhook_post(webhook, key, data)
             if len(filepath) > 3:
-                Grouplotse.webhook_file_post(webhook,key,filepath)
+                file_path, file_extension = os.path.splitext(filepath)
+                file_size = os.path.getsize(filepath)
+                file_size_kb = file_size / 1024
+                print(f'\nFilesize is {file_size_kb:.2f} Kilobytes')
+                allowed_file_extensions = [".png", ".jpg", ".jpeg"]
+                if file_size <= 1048576 and file_extension in allowed_file_extensions:
+                    Grouplotse.webhook_file_post(webhook, key, filepath, file_extension)
+                    print(f'\nSending a {file_extension} image to GroupLotse')
+                    window.find_element('-FILEPATHWH-').Update('')
+                if file_size >= 1048576:
+                    print("\nFile is too large! Max File Size is 1024Kb / 1 MegaByte.")
+                if file_extension not in allowed_file_extensions:
+                    print("\nFiletype must be a .png or .jpg/jpeg\n")
+
 
             with open("grouplotse_tester_webhook.txt", "w") as glsetwebhook:
                 glsetwebhook.write(webhook + "#" + key)  # append data
