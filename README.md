@@ -6,7 +6,7 @@
 </p>
 
 
-# GroupLotse Buddy
+# GroupLotse Tester
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/ColditzColligula/GroupLotse-Tester?style=plastic)
 ![GitHub all releases](https://img.shields.io/github/downloads/ColditzColligula/GroupLotse-Tester/total)
