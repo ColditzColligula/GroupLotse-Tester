@@ -93,7 +93,7 @@ In addition to our free plan, there are three other paid plans. These differ in 
 
 ## Windows Executable
 
-You can download a 7zip-File containing all necessary files to run this application [here.](https://www.dropbox.com/s/pdncabfx59zisze/GroupLotse%20Tester.7z?raw=1) After you have extracted the Archive, just run the Shortcut "GroupLotse Interface Tester".
+You can download a 7zip-File containing all necessary files to run this application [here.](https://github.com/ColditzColligula/GroupLotse-Tester/releases/download/1.0/GroupLotse.Tester.zip) After you have extracted the Archive, just run the executable "GroupLotse Interface Tester".
 
 ## Setup and Usage
 
@@ -101,7 +101,7 @@ The application works on Windows and Unix/MacOS.
 
 ![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 
-You can either [download the prepared 7zip-file](https://www.dropbox.com/s/pdncabfx59zisze/GroupLotse%20Tester.7z?raw=1) containing all necessary files to run and execute the program **or** [download the Github Repository](https://github.com/ColditzColligula/GroupLotse-Tester/archive/refs/heads/main.zip) and open the "main.py" file with Python3.
+You can either [download the prepared zip-file](https://github.com/ColditzColligula/GroupLotse-Tester/releases/download/1.0/GroupLotse.Tester.zip) containing all necessary files to run and execute the program **or** [download the Github Repository](https://github.com/ColditzColligula/GroupLotse-Tester/archive/refs/heads/main.zip) and open the "main.py" file with Python3.
 If you're **not** using the bundled .exe file, make sure to install the required libraries.
 
 You can do this easily by utilizing the "requirements.txt" by opening a CMD/Shell and typing "pip install -r requirements.txt" (You must be in the same directory where the file is located)
